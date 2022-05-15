@@ -4,7 +4,7 @@ function setDateTime() {
   var month = String(date.getMonth() + 1).padStart(2, "0");
   var day = String(date.getDate()).padStart(2, "0");
   var hours = date.getHours();
-  var minutes = date.getMinutes();
+  var minutes = String(date.getMinutes()).padStart(2, "0");
   var timePattern = hours + ":" + minutes;
   var datePattern = year + "-" + month + "-" + day;
   document.getElementById("date").value = datePattern;
@@ -16,6 +16,7 @@ function addHandler() {
 }
 
 function validateFields(
+  dataSource,
   cname,
   phone,
   unumber,
@@ -49,7 +50,8 @@ function validateFields(
     if (phoneNumber.length < 10 || phoneNumber.length > 12) {
       alert("Phone Number Must Be Between 10 - 12 Characters Long!");
     } else {
-      getData(
+      postData(
+        dataSource,
         cname,
         phone,
         unumber,
@@ -75,7 +77,8 @@ function createRequest() {
   return xhr;
 }
 
-function getData(
+function postData(
+  dataSource,
   cname,
   phone,
   unumber,
@@ -89,7 +92,7 @@ function getData(
 ) {
   var xhr = createRequest();
   if (xhr) {
-    var place = document.getElementById(divID);
+    var place = document.getElementById(targetDiv);
     var vars =
       "?cname=" +
       cname +
@@ -109,7 +112,8 @@ function getData(
       date +
       "&time=" +
       time;
-    xhr.open("POST", "booking.php", true);
+    xhr.open("POST", dataSource, true); //opens connection between client and server side
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //sets request header for xhr
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         place.innerHTML = xhr.responseText;
