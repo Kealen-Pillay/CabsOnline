@@ -18,22 +18,31 @@ function addHandler() {
 function validateFields() {
   var customerName = document.getElementById("cname").value;
   var phoneNumber = document.getElementById("phone").value;
-  var streetNumber = document.getElementById("stnumnber").value;
-  var streetName = document.getElementById("sname").value;
+  var streetNumber = document.getElementById("snumber").value;
+  var streetName = document.getElementById("stname").value;
   var pickupDate = document.getElementById("date").value;
   var pickupTime = document.getElementById("time").value;
+  var notNull = false;
 
-  if (customerName == null) {
+  if (customerName === "") {
     alert("Please provide the customer name!");
-  } else if (phoneNumber == null) {
+  } else if (phoneNumber === "") {
     alert("Please provide the phone number!");
-  } else if (streetNumber == null) {
+  } else if (streetNumber === "") {
     alert("please provide the street number!");
-  } else if (streetName == null) {
+  } else if (streetName === "") {
     alert("please provide the street name!");
   } else if (pickupDate == null) {
     alert("Please provide a pickup date!");
-  } else if (pickupTime == null) {
+  } else if (pickupTime === "") {
     alert("Please provide a pickup time!");
+  } else {
+    notNull = true;
+  }
+
+  if (notNull) {
+    if (phoneNumber.length < 10 || phoneNumber.length > 12) {
+      alert("Phone Number Must Be Between 10 - 12 Characters Long!");
+    }
   }
 }
