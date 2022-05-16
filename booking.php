@@ -1,4 +1,5 @@
 <?php
+    /*----------------- Database Code ----------------------------- */
     // require_once("../../conf/sqlinfo2.inc.php");
             
     // $conn = @mysqli_connect($sql_host, $sql_user, $sql_pass)
@@ -18,6 +19,5 @@
     //         . ": " . mysqli_error($conn));
 
     $cname = $_POST["cname"];
-    echo $cname
-
+    echo $cname;
 ?>

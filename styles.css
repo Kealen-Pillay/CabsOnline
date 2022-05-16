@@ -5,8 +5,8 @@ body {
 
 h1 {
   color: #000000;
-  border-width: .25em;  
-  border-style: double; 
+  border-width: 0.25em;
+  border-style: double;
   text-align: center;
 }
 

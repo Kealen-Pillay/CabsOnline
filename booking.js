@@ -16,7 +16,6 @@ function addHandler() {
 }
 
 function validateFields(
-  dataSource,
   cname,
   phone,
   unumber,
@@ -32,7 +31,6 @@ function validateFields(
     alert("Phone Number Must Be Between 10 - 12 Characters Long!");
   } else {
     postData(
-      dataSource,
       cname,
       phone,
       unumber,
@@ -47,18 +45,7 @@ function validateFields(
   }
 }
 
-function createRequest() {
-  var xhr = false;
-  if (window.XMLHttpRequest) {
-    xhr = new XMLHttpRequest();
-  } else if (window.ActiveXObject) {
-    xhr = new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  return xhr;
-}
-
 function postData(
-  dataSource,
   cname,
   phone,
   unumber,
@@ -70,35 +57,34 @@ function postData(
   time,
   targetDiv
 ) {
-  var xhr = createRequest();
-  if (xhr) {
-    var place = document.getElementById(targetDiv);
-    var vars =
-      "cname=" +
-      cname +
-      "&phone=" +
-      phone +
-      "&unumber=" +
-      unumber +
-      "&snumber=" +
-      snumber +
-      "&stname=" +
-      stname +
-      "&sbname=" +
-      sbname +
-      "&dsbname=" +
-      dsbname +
-      "&date=" +
-      date +
-      "&time=" +
-      time;
-    xhr.open("POST", dataSource, true); //opens connection between client and server side
-    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        place.innerHTML = xhr.responseText;
-      }
-    };
-    xhr.send(vars);
-  }
+  var xhr = new XMLHttpRequest();
+  var place = document.getElementById(targetDiv);
+  var vars =
+    "cname=" +
+    cname +
+    "&phone=" +
+    phone +
+    "&unumber=" +
+    unumber +
+    "&snumber=" +
+    snumber +
+    "&stname=" +
+    stname +
+    "&sbname=" +
+    sbname +
+    "&dsbname=" +
+    dsbname +
+    "&date=" +
+    date +
+    "&time=" +
+    time;
+  xhr.open("POST", "booking.php", true); //opens connection between client and server side
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      place.innerHTML = xhr.responseText;
+      alert("yo");
+    }
+  };
+  xhr.send(vars);
 }
