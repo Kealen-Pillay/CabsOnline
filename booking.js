@@ -28,42 +28,22 @@ function validateFields(
   time,
   targetDiv
 ) {
-  var notNull = false;
-
-  if (cname === "") {
-    alert("Please provide the customer name!");
-  } else if (phone === "") {
-    alert("Please provide the phone number!");
-  } else if (snumber === "") {
-    alert("please provide the street number!");
-  } else if (stname === "") {
-    alert("please provide the street name!");
-  } else if (date == null) {
-    alert("Please provide a pickup date!");
-  } else if (time === "") {
-    alert("Please provide a pickup time!");
+  if (phone.length < 10 || phone.length > 12) {
+    alert("Phone Number Must Be Between 10 - 12 Characters Long!");
   } else {
-    notNull = true;
-  }
-
-  if (notNull) {
-    if (phoneNumber.length < 10 || phoneNumber.length > 12) {
-      alert("Phone Number Must Be Between 10 - 12 Characters Long!");
-    } else {
-      postData(
-        dataSource,
-        cname,
-        phone,
-        unumber,
-        snumber,
-        stname,
-        sbname,
-        dsbname,
-        date,
-        time,
-        targetDiv
-      );
-    }
+    postData(
+      dataSource,
+      cname,
+      phone,
+      unumber,
+      snumber,
+      stname,
+      sbname,
+      dsbname,
+      date,
+      time,
+      targetDiv
+    );
   }
 }
 
@@ -94,7 +74,7 @@ function postData(
   if (xhr) {
     var place = document.getElementById(targetDiv);
     var vars =
-      "?cname=" +
+      "cname=" +
       cname +
       "&phone=" +
       phone +
@@ -113,7 +93,7 @@ function postData(
       "&time=" +
       time;
     xhr.open("POST", dataSource, true); //opens connection between client and server side
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //sets request header for xhr
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         place.innerHTML = xhr.responseText;
