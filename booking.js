@@ -88,10 +88,9 @@ function postData(
       encodeURIComponent(date) +
       "&time=" +
       encodeURIComponent(time);
-    xhr.open("POST", dataSource, true); //opens connection between client and server side
+    xhr.open("POST", dataSource, true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {
-      alert(xhr.readyState); // to let us see the state of the computation
       if (xhr.readyState == 4 && xhr.status == 200) {
         place.innerHTML = xhr.responseText;
       }
