@@ -74,12 +74,13 @@
       <br />
       <input
         name="submit"
-        type="submit"
+        type="button"
         value="Submit"
-        onload="addHandler()"
-        onclick="validateFields(cname.value, phone.value, unumber.value, snumber.value, stname.value, sbname.value, dsbname.value, date.value, time.value, 'test')"
+        onClick="validateFields('booking.php','targetDiv',cname.value, phone.value, unumber.value, snumber.value, stname.value, sbname.value, dsbname.value, date.value, time.value)"
       />
     </form>
-    <p id="test">Data goes here</p>
+    <div id="targetDiv">
+      <p>Data goes here</p>
+    </div>
   </body>
 </html>

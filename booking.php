@@ -19,5 +19,5 @@
     //         . ": " . mysqli_error($conn));
 
     $cname = $_POST["cname"];
-    echo $cname;
+    echo "<p>" . $cname . "</p>";
 ?>

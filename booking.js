@@ -11,11 +11,9 @@ function setDateTime() {
   document.getElementById("time").value = timePattern;
 }
 
-function addHandler() {
-  document.getElementById("submit").addEventListener("click", false);
-}
-
 function validateFields(
+  dataSource,
+  targetDiv,
   cname,
   phone,
   unumber,
@@ -24,13 +22,14 @@ function validateFields(
   sbname,
   dsbname,
   date,
-  time,
-  targetDiv
+  time
 ) {
   if (phone.length < 10 || phone.length > 12) {
     alert("Phone Number Must Be Between 10 - 12 Characters Long!");
   } else {
     postData(
+      dataSource,
+      targetDiv,
       cname,
       phone,
       unumber,
@@ -39,13 +38,24 @@ function validateFields(
       sbname,
       dsbname,
       date,
-      time,
-      targetDiv
+      time
     );
   }
 }
 
+function createRequest() {
+  var xhr = false;
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  return xhr;
+}
+
 function postData(
+  dataSource,
+  targetDiv,
   cname,
   phone,
   unumber,
@@ -54,37 +64,38 @@ function postData(
   sbname,
   dsbname,
   date,
-  time,
-  targetDiv
+  time
 ) {
-  var xhr = new XMLHttpRequest();
-  var place = document.getElementById(targetDiv);
-  var vars =
-    "cname=" +
-    cname +
-    "&phone=" +
-    phone +
-    "&unumber=" +
-    unumber +
-    "&snumber=" +
-    snumber +
-    "&stname=" +
-    stname +
-    "&sbname=" +
-    sbname +
-    "&dsbname=" +
-    dsbname +
-    "&date=" +
-    date +
-    "&time=" +
-    time;
-  xhr.open("POST", "booking.php", true); //opens connection between client and server side
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      place.innerHTML = xhr.responseText;
-      alert("yo");
-    }
-  };
-  xhr.send(vars);
+  var xhr = createRequest();
+  if (xhr) {
+    var place = document.getElementById(targetDiv);
+    var requestBody =
+      "cname=" +
+      encodeURIComponent(cname) +
+      "&phone=" +
+      encodeURIComponent(phone) +
+      "&unumber=" +
+      encodeURIComponent(unumber) +
+      "&snumber=" +
+      encodeURIComponent(snumber) +
+      "&stname=" +
+      encodeURIComponent(stname) +
+      "&sbname=" +
+      encodeURIComponent(sbname) +
+      "&dsbname=" +
+      encodeURIComponent(dsbname) +
+      "&date=" +
+      encodeURIComponent(date) +
+      "&time=" +
+      encodeURIComponent(time);
+    xhr.open("POST", dataSource, true); //opens connection between client and server side
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+      alert(xhr.readyState); // to let us see the state of the computation
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        place.innerHTML = xhr.responseText;
+      }
+    };
+    xhr.send(requestBody);
+  }
 }
