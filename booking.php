@@ -18,6 +18,7 @@
             . "<p>Error code " . mysqli_errno($conn)
             . ": " . mysqli_error($conn));
 
+    /*----------------- Server Handling Code ----------------------------- */
     $cname = $_POST["cname"];
     $phone = $_POST["phone"];
     $unumber = $_POST["unumber"];
@@ -28,5 +29,10 @@
     $date = $_POST["date"];
     $time = $_POST["time"];
 
-    echo "<p>" . $cname . "</p>";
+    
+
+    echo "<h3>Thankyou for your booking!</h3>" .
+        "<p>Booking Reference Number: 1234</p>" .
+         "<p>Pickup Time: " . $time . "</p>" . 
+         "Pickup Date: " . $date . "</p>";
 ?>
