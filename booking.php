@@ -29,10 +29,14 @@
     $date = $_POST["date"];
     $time = $_POST["time"];
 
-    
+    // $numRowsQuery = "SELECT COUNT(*)";
+    // $result = @mysqli_query($conn, $numRowsQuery)
+    // or die("<p>Unable to make query</p>"
+    // . "<p>Error code " . mysqli_errno($conn)
+    // . ": " . mysqli_error($conn));
 
     echo "<h3>Thankyou for your booking!</h3>" .
-        "<p>Booking Reference Number: 1234</p>" .
+        "<p>Booking Reference Number: ". ($result + 1)."</p>" .
          "<p>Pickup Time: " . $time . "</p>" . 
          "Pickup Date: " . $date . "</p>";
 ?>

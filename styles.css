@@ -22,3 +22,12 @@ label {
 #time {
   width: 142px;
 }
+
+#field {
+  border: solid;
+  border-width: 2;
+  border-color: #2159a3;
+  background-color: #34aeeb;
+  display: inline-block;
+  padding-bottom: 20;
+}
