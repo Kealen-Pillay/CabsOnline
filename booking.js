@@ -24,23 +24,23 @@ function validateFields(
   date,
   time
 ) {
-  // if (phone.length < 10 || phone.length > 12) {
-  //   alert("Phone Number Must Be Between 10 - 12 Characters Long!");
-  // } else {
-  postData(
-    dataSource,
-    targetDiv,
-    cname,
-    phone,
-    unumber,
-    snumber,
-    stname,
-    sbname,
-    dsbname,
-    date,
-    time
-  );
-  // }
+  if (phone.length < 10 || phone.length > 12) {
+    alert("Phone Number Must Be Between 10 - 12 Characters Long!");
+  } else {
+    postData(
+      dataSource,
+      targetDiv,
+      cname,
+      phone,
+      unumber,
+      snumber,
+      stname,
+      sbname,
+      dsbname,
+      date,
+      time
+    );
+  }
 }
 
 function createRequest() {
