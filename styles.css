@@ -27,7 +27,25 @@ label {
   border: solid;
   border-width: 2;
   border-color: #2159a3;
-  background-color: #34aeeb;
+  background-color: rgba(52, 174, 235, 0.7);
   display: inline-block;
-  padding-bottom: 20;
+  margin-bottom: 20px;
+  width: 350px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-right: 20px;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#row {
+  display: flex;
+  flex-direction: row;
+}
+
