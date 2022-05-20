@@ -1,18 +1,20 @@
 body {
-  background-color: #32a87f;
+  background-color: #1E1E1E;
   font-family: Futura;
 }
 
 h1 {
-  color: #000000;
+  color: #FFFFFF;
   border-width: 0.25em;
   border-style: double;
   text-align: center;
+  border-color: #5e5656;
 }
 
 label {
   width: 150px;
   display: inline-block;
+  color: #FFFFFF;
 }
 
 #date {
@@ -26,8 +28,8 @@ label {
 #field {
   border: solid;
   border-width: 2;
-  border-color: #2159a3;
-  background-color: rgba(52, 174, 235, 0.7);
+  border-color: #f00a0a;
+  background-color: rgba(245, 66, 66, 0.5);
   display: inline-block;
   margin-bottom: 20px;
   width: 350px;
