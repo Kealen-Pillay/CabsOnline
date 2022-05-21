@@ -44,6 +44,14 @@ function validateFields(
           date,
           time
         );
+        document.getElementById("cname").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("unumber").value = "";
+        document.getElementById("snumber").value = "";
+        document.getElementById("stname").value = "";
+        document.getElementById("sbname").value = "";
+        document.getElementById("dsbname").value = "";
+        setDateTime();
       }
     }
   }
