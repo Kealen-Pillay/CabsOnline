@@ -12,7 +12,7 @@
         . "<p>Error code " . mysqli_errno($conn)
         . ": " . mysqli_error($conn));
     
-    $tableCreationQuery = "CREATE TABLE IF NOT EXISTS requests (bookingNo INT(10), customerName VARCHAR(255), phone INTEGER(12), unitNumber INT(10), streetNumber INTEGER(2), streetName VARCHAR(255), suburb VARCHAR(255), destinationSuburb VARCHAR(255), pickupDate DATE, pickupTime TIME, assignmentStatus VARCHAR(255))";
+    $tableCreationQuery = "CREATE TABLE IF NOT EXISTS requests (bookingNo INT(10) AUTO_INCREMENT PRIMARY KEY, customerName VARCHAR(255), phone INTEGER(12), unitNumber INT(10), streetNumber INTEGER(2), streetName VARCHAR(255), suburb VARCHAR(255), destinationSuburb VARCHAR(255), pickupDate DATE, pickupTime TIME, assignmentStatus VARCHAR(255))";
     $result = @mysqli_query($conn, $tableCreationQuery)
             or die("<p>Unable to make query</p>"
             . "<p>Error code " . mysqli_errno($conn)
@@ -29,14 +29,23 @@
     $date = $_POST["date"];
     $time = $_POST["time"];
 
-    // $numRowsQuery = "SELECT COUNT(*)";
-    // $result = @mysqli_query($conn, $numRowsQuery)
-    // or die("<p>Unable to make query</p>"
-    // . "<p>Error code " . mysqli_errno($conn)
-    // . ": " . mysqli_error($conn));
+    $numRowsQuery = "SELECT bookingNo FROM $sql_table";
+    $result = @mysqli_query($conn, $numRowsQuery)
+    or die("<p>Unable to make query</p>"
+    . "<p>Error code " . mysqli_errno($conn)
+    . ": " . mysqli_error($conn));
+
+    $bookingRef = @mysqli_num_rows($result)
+    or die("<p>Unable to make query</p>"
+    . "<p>Error code " . mysqli_errno($conn)
+    . ": " . mysqli_error($conn));
+
+    $newBookingRef = $bookingRef + 1;
+
+    $insertBookingQuery = "INSERT INTO $sql_table (bookingNo, customerName, phone, unitNumber, streetNumber, streetName, suburb, destinationSuburb, pickupDate, pickupTime, assignmentStatus) VALUES ('$newBookingRef', '$cname', '$phone', '$unumber', '$snumber', '$stname', '$sbname', '$dsbname', '$date', '$time')";
 
     echo "<h3>Thankyou for your booking!</h3>" .
-        "<p>Booking Reference Number: ". ($result + 1)."</p>" .
+        "<p>Booking Reference Number: ". ($newBookingRef)."</p>" .
          "<p>Pickup Time: " . $time . "</p>" . 
          "Pickup Date: " . $date . "</p>";
 ?>
