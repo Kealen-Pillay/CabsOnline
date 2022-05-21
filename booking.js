@@ -24,22 +24,52 @@ function validateFields(
   date,
   time
 ) {
-  if (phone.length < 10 || phone.length > 12) {
-    alert("Phone Number Must Be Between 10 - 12 Characters Long!");
+  if (isNotNull(cname, phone, snumber, stname, date, time)) {
+    if (isNaN(phone)) {
+      alert("Phone number must consist of numerical characters only!");
+    } else {
+      if (phone.length < 10 || phone.length > 12) {
+        alert("Phone number must be between 10 - 12 characters long!");
+      } else {
+        postData(
+          dataSource,
+          targetDiv,
+          cname,
+          phone,
+          unumber,
+          snumber,
+          stname,
+          sbname,
+          dsbname,
+          date,
+          time
+        );
+      }
+    }
+  }
+}
+
+function isNotNull(cname, phone, snumber, stname, date, time) {
+  if (cname.length == 0) {
+    alert("You must provide a customer name!");
+    return false;
+  } else if (phone.length == 0) {
+    alert("You must provide a phone number!");
+    return false;
+  } else if (snumber.length == 0) {
+    alert("You must provide a street number!");
+    return false;
+  } else if (stname.length == 0) {
+    alert("You must provide a street name!");
+    return false;
+  } else if (date.length == 0) {
+    alert("You must provide a pickup date!");
+    return false;
+  } else if (time.length == 0) {
+    alert("You must provide a pickup time!");
+    return false;
   } else {
-    postData(
-      dataSource,
-      targetDiv,
-      cname,
-      phone,
-      unumber,
-      snumber,
-      stname,
-      sbname,
-      dsbname,
-      date,
-      time
-    );
+    return true;
   }
 }
 

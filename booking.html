@@ -17,8 +17,6 @@
             type="text"
             name="cname"
             id="cname"
-            placeholder="Customer Name"
-            required
           />
         </div>
         <br />
@@ -28,9 +26,6 @@
             type="text"
             name="phone"
             id="phone"
-            placeholder="Phone Number"
-            required
-            pattern="^[0-9]{10,12}$"
           />
         </div>
       </div>
@@ -42,7 +37,7 @@
             type="text"
             name="unumber"
             id="unumber"
-            placeholder="Unit Number"
+            placeholder="Optional"
           />
         </div>
         <br />
@@ -52,8 +47,6 @@
             type="text"
             name="snumber"
             id="snumber"
-            placeholder="Street Number"
-            required
           />
         </div>
       </div>
@@ -65,8 +58,6 @@
             type="text"
             name="stname"
             id="stname"
-            placeholder="Street Name"
-            required
           />
         </div>
         <br />
@@ -83,19 +74,19 @@
             type="text"
             name="dsbname"
             id="dsbname"
-            placeholder="Destination Suburb"
+            placeholder="Optional"
           />
         </div>
         <br />
         <div id="field">
           <label for="pickupDate"> Pickup Date: </label>
-          <input type="date" name="date" id="date" required />
+          <input type="date" name="date" id="date" />
         </div>
       </div>
       <br />
       <div id="field">
         <label for="pickupTime"> Pickup Time: </label>
-        <input type="time" name="time" id="time" required />
+        <input type="time" name="time" id="time"/>
       </div>
       <br />
       <br />
@@ -107,7 +98,7 @@
       />
     </form>
     <div id="targetDiv">
-      <p id="confirmationMessage"></p>
+      <p></p>
     </div>
   </body>
 </html>
