@@ -64,8 +64,8 @@
     . ": " . mysqli_error($conn));
 
     /*----------------- Booking Confirmation Message ----------------------------- */
-    echo "<h3>Thankyou for your booking!</h3>" .
-        "<p>Booking Reference Number: ". ($bookingRefNum)."</p>" .
-         "<p>Pickup Time: " . $time . "</p>" . 
-         "Pickup Date: " . $date . "</p>";
+    echo "<h3 style='color:white;'>Thankyou for your booking!</h3>" .
+        "<p style='color:white;'>Booking Reference Number: ". ($bookingRefNum)."</p>" .
+        "<p style='color:white;'>Pickup Time: " . $time . "</p>" . 
+        "<p style='color:white;'>Pickup Date: " . $date . "</p>";
 ?>
