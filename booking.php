@@ -30,6 +30,7 @@
     $time = $_POST["time"];
     $assignmentStatus = "unassigned";
 
+    /*----------------- Computes Booking Reference Number ----------------------------- */
     $numRowsQuery = "SELECT bookingNo FROM $sql_table";
     $result = @mysqli_query($conn, $numRowsQuery)
     or die("<p>Unable to retrieve rows</p>"
@@ -42,16 +43,29 @@
         $bookingRef = mysqli_num_rows($result);
     }
 
-    $newBookingRef = $bookingRef + 1;
+    $newBookingRefNum = $bookingRef + 1;
+    if($newBookingRefNum < 10) {
+        $bookingRefNum = "BRN0000" . $newBookingRefNum;
+    } else if($newBookingRefNum >= 10 || $newBookingRefNum < 100) {
+        $bookingRefNum = "BRN000" . $newBookingRefNum;
+    } else if($newBookingRefNum >= 100 || $newBookingRefNum < 1000) {
+        $bookingRefNum = "BRN00" . $newBookingRefNum;
+    } else if($newBookingRefNum >= 1000 || $newBookingRefNum < 10000) {
+        $bookingRefNum = "BRN0" . $newBookingRefNum;
+    } else {
+        $bookingRefNum = "BRN" . $newBookingRefNum;
+    }
 
+    /*----------------- Inserts New Booking Into The Database ----------------------------- */
     $insertBookingQuery = "INSERT INTO $sql_table (customerName, phone, unitNumber, streetNumber, streetName, suburb, destinationSuburb, pickupDate, pickupTime, assignmentStatus) VALUES ('$cname', '$phone', '$unumber', '$snumber', '$stname', '$sbname', '$dsbname', '$date', '$time', '$assignmentStatus')";
     $result = @mysqli_query($conn, $insertBookingQuery)
     or die("<p>Unable to insert data</p>"
     . "<p>Error code " . mysqli_errno($conn)
     . ": " . mysqli_error($conn));
 
+    /*----------------- Booking Confirmation Message ----------------------------- */
     echo "<h3>Thankyou for your booking!</h3>" .
-        "<p>Booking Reference Number: ". ($newBookingRef)."</p>" .
+        "<p>Booking Reference Number: ". ($bookingRefNum)."</p>" .
          "<p>Pickup Time: " . $time . "</p>" . 
          "Pickup Date: " . $date . "</p>";
 ?>
