@@ -59,9 +59,16 @@
     . "<p>Error code " . mysqli_errno($conn)
     . ": " . mysqli_error($conn));
 
+    /*----------------- Format Pickup Date Retrieved From The Database ----------------------------- */
+    // $retrieveDateQuery = "SELECT DATE_FORMAT(pickupDate, 'dd/mm/yyyy') FROM $sql_table WHERE bookingNo='$newBookingRefNum'";
+    // $pickupDateFormatted = @mysqli_query($conn, $retrieveDateQuery)
+    // or die("<p>Unable to retrieve date</p>"
+    // . "<p>Error code " . mysqli_errno($conn)
+    // . ": " . mysqli_error($conn));
+
     /*----------------- Booking Confirmation Message ----------------------------- */
     echo "<h3 style='color:white;'>Thankyou for your booking!</h3>" .
         "<p style='color:white;'>Booking Reference Number: ". ($bookingRefNum)."</p>" .
         "<p style='color:white;'>Pickup Time: " . $time . "</p>" . 
-        "<p style='color:white;'>Pickup Date: " . $date . "</p>";
+        "<p style='color:white;'>Pickup Date: " . $newBookingRefNum . "</p>";
 ?>
