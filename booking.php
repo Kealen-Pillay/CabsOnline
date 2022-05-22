@@ -70,5 +70,5 @@
     echo "<h3 style='color:white;'>Thankyou for your booking!</h3>" .
         "<p style='color:white;'>Booking Reference Number: ". ($bookingRefNum)."</p>" .
         "<p style='color:white;'>Pickup Time: " . $time . "</p>" . 
-        "<p style='color:white;'>Pickup Date: " . $newBookingRefNum . "</p>";
+        "<p style='color:white;'>Pickup Date: " . $date . "</p>";
 ?>
