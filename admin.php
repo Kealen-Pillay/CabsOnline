@@ -20,7 +20,7 @@
         if(isset($bookingReferenceNumber)) {
             $searchQuery = "SELECT * FROM $sql_table WHERE bookingNo='$bookingReferenceNumber'";
         } else {
-            $searchQuery = "SELECT * FROM $sql_table WHERE assignmentStatus='Unassigned' AND pickupTime<=''";
+            $searchQuery = "SELECT * FROM $sql_table WHERE assignmentStatus='Unassigned' AND pickupTime>'' AND pickupTime<''";
         }
 
         $result = @mysqli_query($conn, $searchQuery)
