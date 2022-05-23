@@ -13,7 +13,7 @@
         . ": " . mysqli_error($conn));
 
     /*----------------- Search Database ----------------------------- */
-    $bookingReferenceNumber = $_GET["booking"];
+    $bookingReferenceNumber = $_GET["bookingNumber"];
     // $bookingPattern = "/^BRN[0-9]+$/";
 
     // if(preg_match($bookingPattern,$bookingReferenceNumber)) {
@@ -28,32 +28,32 @@
         } else {
             
             if(@mysqli_num_rows($result) > 0) {
-                echo "<table border=\"1\">";
+                echo "<table border=\"1\" style='border-color:#f00a0a;'>";
                 echo "<tr>\n"
-                ."<th scope=\"col\">Booking Reference Number</th>\n"
-                ."<th scope=\"col\">Customer Name</th>\n"
-                ."<th scope=\"col\">Phone</th>\n"
-                ."<th scope=\"col\">Pickup Suburb</th>\n"
-                ."<th scope=\"col\">Destination Suburb</th>\n"
-                ."<th scope=\"col\">Pickup Date & Time</th>\n"
-                ."<th scope=\"col\">Status</th>\n"
-                ."<th scope=\"col\">Assign</th>\n"
+                ."<th style='color:white;' scope=\"col\">Booking Reference Number</th>\n"
+                ."<th style='color:white;' scope=\"col\">Customer Name</th>\n"
+                ."<th style='color:white;' scope=\"col\">Phone</th>\n"
+                ."<th style='color:white;' scope=\"col\">Pickup Suburb</th>\n"
+                ."<th style='color:white;' scope=\"col\">Destination Suburb</th>\n"
+                ."<th style='color:white;' scope=\"col\">Pickup Date & Time</th>\n"
+                ."<th style='color:white;' scope=\"col\">Status</th>\n"
+                ."<th style='color:white;' scope=\"col\">Assign</th>\n"
                 ."</tr>\n";
                 while($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
-                    echo "<td>",$row["bookingNo"],"</td>";
-                    echo "<td>",$row["customerName"],"</td>";
-                    echo "<td>",$row["phone"],"</td>";
-                    echo "<td>",$row["suburb"],"</td>";
-                    echo "<td>",$row["destinationSuburb"],"</td>";
-                    echo "<td>",$row["pickupDate"] . " " . $row["pickupTime"],"</td>";
-                    echo "<td>",$row["assignmentStatus"],"</td>";
-                    echo "<td> Assign Button</td>";
+                    echo "<td style='color:white;'>",$row["bookingNo"],"</td>";
+                    echo "<td style='color:white;'>",$row["customerName"],"</td>";
+                    echo "<td style='color:white;'>",$row["phone"],"</td>";
+                    echo "<td style='color:white;'>",$row["suburb"],"</td>";
+                    echo "<td style='color:white;'>",$row["destinationSuburb"],"</td>";
+                    echo "<td style='color:white;'>",$row["pickupDate"] . " " . $row["pickupTime"],"</td>";
+                    echo "<td style='color:white;'>",$row["assignmentStatus"],"</td>";
+                    echo "<td style='color:white;'> Assign Button</td>";
                     echo "</tr>";
                 }
                 echo "</table>";
             } else {
-                //print doesnt exist message
+                echo "<h2 style='color:white;'>Booking Record Does Not Exist!</h2>";
             }
         }
 

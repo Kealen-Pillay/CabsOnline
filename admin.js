@@ -8,7 +8,7 @@ function createRequest() {
   return xhr;
 }
 
-function searchBooking(targetDiv, bookingReferenceNumber) {
+function searchBookings(targetDiv, bookingReferenceNumber) {
   var place = document.getElementById(targetDiv);
   xhr = createRequest();
   if (xhr) {
