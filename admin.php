@@ -17,7 +17,12 @@
     // $bookingPattern = "/^BRN[0-9]+$/";
 
     // if(preg_match($bookingPattern,$bookingReferenceNumber)) {
-        $searchQuery = "SELECT * FROM $sql_table WHERE bookingNo='$bookingReferenceNumber'";
+        if(isset($bookingReferenceNumber)) {
+            $searchQuery = "SELECT * FROM $sql_table WHERE bookingNo='$bookingReferenceNumber'";
+        } else {
+            $searchQuery = "SELECT * FROM $sql_table WHERE assignmentStatus='Unassigned' AND pickupTime<=''";
+        }
+
         $result = @mysqli_query($conn, $searchQuery)
         or die("<p>Unable to make query</p>"
         . "<p>Error code " . mysqli_errno($conn)
@@ -26,7 +31,6 @@
         if(!$result) {
             echo "<p>Something went wrong with ", $searchQuery, "</p>";
         } else {
-            
             if(@mysqli_num_rows($result) > 0) {
                 echo "<table border=\"1\" style='border-color:#f00a0a;'>";
                 echo "<tr>\n"
@@ -56,7 +60,6 @@
                 echo "<h2 style='color:white;'>Booking Record Does Not Exist!</h2>";
             }
         }
-
     // }
 
     
