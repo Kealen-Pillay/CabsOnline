@@ -28,7 +28,7 @@
     $dsbname = $_POST["dsbname"];
     $date = $_POST["date"];
     $time = $_POST["time"];
-    $assignmentStatus = "unassigned";
+    $assignmentStatus = "Unassigned";
 
     /*----------------- Computes Booking Reference Number ----------------------------- */
     $numRowsQuery = "SELECT bookingNo FROM $sql_table";
