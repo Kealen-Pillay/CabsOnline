@@ -1,9 +1,24 @@
-function searchBooking(bookingReferenceNumber) {
-    if(bookingReferenceNumber == "") {
-        
-    } else if (/^BRN[0-9]+$/.test(bookingReferenceNumber)) {
+function createRequest() {
+  var xhr = false;
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else if (window.ActiveXObject) {
+    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  return xhr;
+}
 
-    } else {
-        alert("Please Provide A Booking Reference Number In The Correct Format (eg: BRN00001) Or Click 'Search' To Display All Bookings With A Pickup Time Within 2 Hours Of The Current Time!")
-    }
+function searchBooking(targetDiv, bookingReferenceNumber) {
+  var place = document.getElementById(targetDiv);
+  xhr = createRequest();
+  if (xhr) {
+    var requestBody = "admin.php?bookingNumber=" + bookingReferenceNumber;
+    xhr.open("GET", requestBody, true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        place.innerHTML = xhr.responseText;
+      }
+    };
+    xhr.send(null);
+  }
 }

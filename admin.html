@@ -22,7 +22,10 @@
       type="button"
       name="sbutton"
       value="Search"
-      onClick="searchBookings(bsearch.value)"
+      onClick="searchBookings('targetDiv',bsearch.value)"
     />
+    <div id="targetDiv">
+        <p>Fetched Data Goes Here</p>
+    </div>
   </body>
 </html>
