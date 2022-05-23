@@ -9,23 +9,25 @@
   <body>
     <h1>CabsOnline</h1>
     <br />
-    <div id="field">
-      <label>Booking Request:</label>
+    <form>
+      <div id="field">
+        <label>Booking Request:</label>
+        <input
+          type="text"
+          id="bsearch"
+          name="bsearch"
+          placeholder="eg:BRN00001"
+        />
+      </div>
       <input
-        type="text"
-        id="bsearch"
-        name="bsearch"
-        placeholder="eg:BRN00001"
+        type="button"
+        name="sbutton"
+        value="Search"
+        onClick="searchBookings('targetDiv',bsearch.value)"
       />
-    </div>
-    <input
-      type="button"
-      name="sbutton"
-      value="Search"
-      onClick="searchBookings('targetDiv',bsearch.value)"
-    />
-    <div id="targetDiv">
+      <div id="targetDiv">
         <p>Fetched Data Goes Here</p>
-    </div>
+      </div>
+    </form>
   </body>
 </html>

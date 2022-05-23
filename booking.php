@@ -12,7 +12,7 @@
         . "<p>Error code " . mysqli_errno($conn)
         . ": " . mysqli_error($conn));
     
-    $tableCreationQuery = "CREATE TABLE IF NOT EXISTS requests (bookingNo INT(10), customerName VARCHAR(255), phone INTEGER(12), unitNumber INT(10), streetNumber INTEGER(2), streetName VARCHAR(255), suburb VARCHAR(255), destinationSuburb VARCHAR(255), pickupDate DATE, pickupTime TIME, assignmentStatus VARCHAR(255))";
+    $tableCreationQuery = "CREATE TABLE IF NOT EXISTS requests (bookingNo VARCHAR(255), customerName VARCHAR(255), phone INT(12), unitNumber INT(10), streetNumber INTEGER(2), streetName VARCHAR(255), suburb VARCHAR(255), destinationSuburb VARCHAR(255), pickupDate DATE, pickupTime TIME, assignmentStatus VARCHAR(255))";
     $result = @mysqli_query($conn, $tableCreationQuery)
             or die("<p>Unable to create table</p>"
             . "<p>Error code " . mysqli_errno($conn)
@@ -53,7 +53,7 @@
     }
 
     /*----------------- Inserts New Booking Into The Database ----------------------------- */
-    $insertBookingQuery = "INSERT INTO $sql_table (bookingNo, customerName, phone, unitNumber, streetNumber, streetName, suburb, destinationSuburb, pickupDate, pickupTime, assignmentStatus) VALUES ('$newBookingRefNum', '$cname', '$phone', '$unumber', '$snumber', '$stname', '$sbname', '$dsbname', '$date', '$time', '$assignmentStatus')";
+    $insertBookingQuery = "INSERT INTO $sql_table (bookingNo, customerName, phone, unitNumber, streetNumber, streetName, suburb, destinationSuburb, pickupDate, pickupTime, assignmentStatus) VALUES ('$bookingRefNum', '$cname', '$phone', '$unumber', '$snumber', '$stname', '$sbname', '$dsbname', '$date', '$time', '$assignmentStatus')";
     $result = @mysqli_query($conn, $insertBookingQuery)
     or die("<p>Unable to insert data</p>"
     . "<p>Error code " . mysqli_errno($conn)
