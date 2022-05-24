@@ -43,6 +43,8 @@
                 ."</tr>\n";
                 while($row = mysqli_fetch_assoc($result)) {
                     $bookingNum = $row["bookingNo"];
+                    $assignStatus = $bookingNum . "status";
+                    $assignButton = $bookingNum . "button";
                     echo "<tr>";
                     echo "<td style='color:white;'>",$row["bookingNo"],"</td>";
                     echo "<td style='color:white;'>",$row["customerName"],"</td>";
@@ -50,13 +52,14 @@
                     echo "<td style='color:white;'>",$row["suburb"],"</td>";
                     echo "<td style='color:white;'>",$row["destinationSuburb"],"</td>";
                     echo "<td style='color:white;'>",$row["pickupDate"] . " " . $row["pickupTime"],"</td>";
-                    echo "<td style='color:white;' id='status'>",$row["assignmentStatus"],"</td>";
+                    echo "<td style='color:white;' id='$assignStatus'>",$row["assignmentStatus"],"</td>";
                     echo "<td style='color:white;'>
                     <input
+                    id='$assignButton'
                     type='button'
                     name='assignButton'
                     value='assign'   
-                    onClick='updateStatus(\"$bookingNum\")'
+                    onClick='updateStatus(\"$bookingNum\", \"$assignStatus\",\"$assignButton\")'
                   />
                   </td>";
                     echo "</tr>";

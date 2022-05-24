@@ -9,6 +9,7 @@ function createRequest() {
 }
 
 function searchBookings(targetDiv, bookingReferenceNumber) {
+  document.getElementById("confirmationMessage").innerHTML = "";
   var date = new Date();
   var hours = date.getHours();
   var minutes = String(date.getMinutes()).padStart(2, "0");
@@ -31,8 +32,7 @@ function searchBookings(targetDiv, bookingReferenceNumber) {
   }
 }
 
-function updateStatus(bookingReferenceNumber) {
-  alert(bookingReferenceNumber);
+function updateStatus(bookingReferenceNumber, statusMessage, assignButton) {
   place = document.getElementById("confirmationMessage");
   var xhr = createRequest();
   if (xhr) {
@@ -42,6 +42,8 @@ function updateStatus(bookingReferenceNumber) {
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         place.innerHTML = xhr.responseText;
+        document.getElementById(assignButton).disabled = true;
+        document.getElementById(statusMessage).innerHTML = "Assigned";
       }
     };
   }
