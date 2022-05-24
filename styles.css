@@ -1,10 +1,10 @@
 body {
-  background-color: #1E1E1E;
+  background-color: #1e1e1e;
   font-family: Futura;
 }
 
 h1 {
-  color: #FFFFFF;
+  color: #ffffff;
   border-width: 0.25em;
   border-style: double;
   text-align: center;
@@ -14,7 +14,7 @@ h1 {
 label {
   width: 150px;
   display: inline-block;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 #date {
@@ -55,3 +55,11 @@ td {
   background-color: rgba(245, 66, 66, 0.5);
 }
 
+#targetDiv {
+  text-align: center;
+}
+
+#createBooking {
+  width: 150px;
+  font-weight: bold;
+}

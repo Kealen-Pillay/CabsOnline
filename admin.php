@@ -58,7 +58,7 @@
                     id='$assignButton'
                     type='button'
                     name='assignButton'
-                    value='assign'   
+                    value='Assign'   
                     onClick='updateStatus(\"$bookingNum\", \"$assignStatus\",\"$assignButton\")'
                   />
                   </td>";
