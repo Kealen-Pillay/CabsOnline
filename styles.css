@@ -74,7 +74,7 @@ td {
   text-align: center;
 }
 
-#createBooking {
+#createBooking, #search {
   width: 150px;
   font-weight: bold;
 }
