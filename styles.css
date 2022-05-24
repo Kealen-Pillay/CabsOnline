@@ -3,12 +3,27 @@ body {
   font-family: Futura;
 }
 
+#heading {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+a {
+  margin-left: 20px;
+  color: rgba(245, 66, 66, 0.5);
+}
+
 h1 {
   color: #ffffff;
-  border-width: 0.25em;
-  border-style: double;
   text-align: center;
-  border-color: #5e5656;
+  border: solid;
+  width: 200px;
+  border-style: double;
+  border-width: 0.25em;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 label {
