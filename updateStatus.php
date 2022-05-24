@@ -14,9 +14,8 @@
     
      /*----------------- Update Assignment Status ----------------------------- */
      $bookingReferenceNumber = $_POST["bookingReferenceNumber"];
-     $newStatus = $_POST["assignmentStatus"];
 
-     $updateQuery = "UPDATE $sql_table SET assignmentStatus='$newStatus' WHERE bookingNo='$bookingReferenceNumber'";
+     $updateQuery = "UPDATE $sql_table SET assignmentStatus='Assigned' WHERE bookingNo='$bookingReferenceNumber'";
      $result = @mysqli_query($conn, $updateQuery)
         or die("<p>Unable to make query</p>"
         . "<p>Error code " . mysqli_errno($conn)
@@ -25,6 +24,6 @@
     if(!$result) {
         echo "<p>Something went wrong with ", $updateQuery, "</p>";
     } else {
-        echo "<h3 style='color:white;'>Congratulations! Booking request " . $bookingReferenceNumber . "has been assigned!</h3>";
+        echo "<h3 style='color:white;'>Congratulations! Booking request " . $bookingReferenceNumber . " has been assigned!</h3>";
     }
 ?>

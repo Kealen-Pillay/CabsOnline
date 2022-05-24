@@ -31,16 +31,12 @@ function searchBookings(targetDiv, bookingReferenceNumber) {
   }
 }
 
-function updateStatus(bookingReferenceNumber, newStatus) {
-  alert(bookingReferenceNumber, newStatus);
+function updateStatus(bookingReferenceNumber) {
+  alert(bookingReferenceNumber);
   place = document.getElementById("confirmationMessage");
   var xhr = createRequest();
   if (xhr) {
-    var requestBody =
-      "assignmentStatus=" +
-      newStatus +
-      "&bookingReferenceNumber=" +
-      bookingReferenceNumber;
+    var requestBody = "bookingReferenceNumber=" + bookingReferenceNumber;
     xhr.open("POST", "updateStatus.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function () {

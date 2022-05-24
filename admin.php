@@ -42,6 +42,7 @@
                 ."<th style='color:white;' scope=\"col\">Assign</th>\n"
                 ."</tr>\n";
                 while($row = mysqli_fetch_assoc($result)) {
+                    $bookingNum = $row["bookingNo"];
                     echo "<tr>";
                     echo "<td style='color:white;'>",$row["bookingNo"],"</td>";
                     echo "<td style='color:white;'>",$row["customerName"],"</td>";
@@ -55,7 +56,7 @@
                     type='button'
                     name='assignButton'
                     value='assign'   
-                    onClick='updateStatus(\"$bookingReferenceNumber\", \"Assigned\")'
+                    onClick='updateStatus(\"$bookingNum\")'
                   />
                   </td>";
                     echo "</tr>";
