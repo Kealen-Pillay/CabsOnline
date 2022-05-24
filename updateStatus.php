@@ -17,7 +17,7 @@
      $newStatus = $_POST["assignmentStatus"];
 
      $updateQuery = "UPDATE $sql_table SET assignmentStatus='$newStatus' WHERE bookingNo='$bookingReferenceNumber'";
-     $result = @mysqli_query($conn, $$updateQuery)
+     $result = @mysqli_query($conn, $updateQuery)
         or die("<p>Unable to make query</p>"
         . "<p>Error code " . mysqli_errno($conn)
         . ": " . mysqli_error($conn));

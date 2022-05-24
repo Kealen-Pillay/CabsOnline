@@ -55,7 +55,7 @@
                     type='button'
                     name='assignButton'
                     value='assign'   
-                    onClick='updateStatus('$bookingReferenceNumber', 'Assigned')'
+                    onClick='updateStatus(\"$bookingReferenceNumber\", \"Assigned\")'
                   />
                   </td>";
                     echo "</tr>";
