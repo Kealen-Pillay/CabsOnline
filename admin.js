@@ -14,7 +14,7 @@ function searchBookings(targetDiv, bookingReferenceNumber) {
   var minutes = String(date.getMinutes()).padStart(2, "0");
   var timePattern = hours + ":" + minutes;
   var place = document.getElementById(targetDiv);
-  xhr = createRequest();
+  var xhr = createRequest();
   if (xhr) {
     var requestBody =
       "admin.php?bookingNumber=" +
@@ -29,4 +29,10 @@ function searchBookings(targetDiv, bookingReferenceNumber) {
     };
     xhr.send(null);
   }
+}
+
+function updateStatus(bookingReferenceNumber, newStatus) {
+  var xhr = createRequest();
+  
+
 }

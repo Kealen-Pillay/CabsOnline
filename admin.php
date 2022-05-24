@@ -49,12 +49,13 @@
                     echo "<td style='color:white;'>",$row["suburb"],"</td>";
                     echo "<td style='color:white;'>",$row["destinationSuburb"],"</td>";
                     echo "<td style='color:white;'>",$row["pickupDate"] . " " . $row["pickupTime"],"</td>";
-                    echo "<td style='color:white;'>",$row["assignmentStatus"],"</td>";
+                    echo "<td style='color:white;' id='status'>",$row["assignmentStatus"],"</td>";
                     echo "<td style='color:white;'>
                     <input
                     type='button'
                     name='assignButton'
                     value='assign'   
+                    onClick='updateStatus('$bookingReferenceNumber', 'Assigned')'
                   />
                   </td>";
                     echo "</tr>";
