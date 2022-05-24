@@ -8,6 +8,7 @@ function setDateTime() {
   var timePattern = hours + ":" + minutes;
   var datePattern = year + "-" + month + "-" + day;
   document.getElementById("date").value = datePattern;
+  document.getElementById("date").setAttribute("min", datePattern);
   document.getElementById("time").value = timePattern;
 }
 
