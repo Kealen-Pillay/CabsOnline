@@ -61,8 +61,11 @@
                 }
                 echo "</table>";
             } else {
-                echo "<h2 style='color:white;'>Booking Record Does Not Exist!</h2>";
-                echo "<h2 style='color:white;'>" . @mysqli_num_rows($result) . "</h2>";
+                if($bookingReferenceNumber == "") {
+                    echo "<h2 style='color:white;'>There are currently no unassigned booking requests within 2 hours of current date and time!</h2>";
+                } else {
+                    echo "<h2 style='color:white;'>Booking Record Does Not Exist!</h2>";
+                }
             }
         }
 ?>
