@@ -32,7 +32,21 @@ function searchBookings(targetDiv, bookingReferenceNumber) {
 }
 
 function updateStatus(bookingReferenceNumber, newStatus) {
+  place = document.getElementById("confirmationMessage");
   var xhr = createRequest();
-  
-
+  if (xhr) {
+    var requestBody =
+      "assignmentStatus=" +
+      encodeURIComponent(newStatus) +
+      "&bookingReferenceNumber=" +
+      encodeURIComponent(bookingReferenceNumber);
+    xhr.open("POST", "admin.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        place.innerHTML = xhr.responseText;
+      }
+    };
+  }
+  xhr.send(requestBody);
 }
