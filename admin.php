@@ -14,13 +14,11 @@
 
     /*----------------- Search Database ----------------------------- */
     $bookingReferenceNumber = $_GET["bookingNumber"];
-    // $bookingPattern = "/^BRN[0-9]+$/";
 
-    // if(preg_match($bookingPattern,$bookingReferenceNumber)) {
-        if(isset($bookingReferenceNumber)) {
+        if($bookingReferenceNumber != "") {
             $searchQuery = "SELECT * FROM $sql_table WHERE bookingNo='$bookingReferenceNumber'";
         } else {
-            $searchQuery = "SELECT * FROM $sql_table WHERE assignmentStatus='Unassigned' AND pickupTime>'' AND pickupTime<''";
+            $searchQuery = "SELECT * FROM $sql_table WHERE assignmentStatus='Unassigned' AND CONCAT(pickupDate, ' ' ,pickupTime) <= DATE_ADD(NOW(), INTERVAL 2 HOUR) AND CONCAT(pickupDate, ' ' ,pickupTime) > NOW()";
         }
 
         $result = @mysqli_query($conn, $searchQuery)
@@ -52,16 +50,19 @@
                     echo "<td style='color:white;'>",$row["destinationSuburb"],"</td>";
                     echo "<td style='color:white;'>",$row["pickupDate"] . " " . $row["pickupTime"],"</td>";
                     echo "<td style='color:white;'>",$row["assignmentStatus"],"</td>";
-                    echo "<td style='color:white;'> Assign Button</td>";
+                    echo "<td style='color:white;'>
+                    <input
+                    type='button'
+                    name='assignButton'
+                    value='assign'   
+                  />
+                  </td>";
                     echo "</tr>";
                 }
                 echo "</table>";
             } else {
                 echo "<h2 style='color:white;'>Booking Record Does Not Exist!</h2>";
+                echo "<h2 style='color:white;'>" . @mysqli_num_rows($result) . "</h2>";
             }
         }
-    // }
-
-    
-    
 ?>
