@@ -53,16 +53,30 @@
                     echo "<td style='color:white;'>",$row["destinationSuburb"],"</td>";
                     echo "<td style='color:white;'>",$row["date"] . " " . $row["time"],"</td>";
                     echo "<td style='color:white;' id='$assignStatus'>",$row["assignmentStatus"],"</td>";
-                    echo "<td style='color:white;'>
-                    <input
-                    id='$assignButton'
-                    type='button'
-                    name='assignButton'
-                    value='Assign'   
-                    onClick='updateStatus(\"$bookingNum\", \"$assignStatus\",\"$assignButton\")'
-                  />
-                  </td>";
-                    echo "</tr>";
+                    if($row["assignmentStatus"] == "Assigned") {
+                        echo "<td style='color:white;'>
+                        <input
+                        id='$assignButton'
+                        type='button'
+                        name='assignButton'
+                        value='Assign' 
+                        disabled  
+                        onClick='updateStatus(\"$bookingNum\", \"$assignStatus\",\"$assignButton\")'
+                        />
+                        </td>";
+                        echo "</tr>";
+                    } else {
+                        echo "<td style='color:white;'>
+                        <input
+                        id='$assignButton'
+                        type='button'
+                        name='assignButton'
+                        value='Assign'   
+                        onClick='updateStatus(\"$bookingNum\", \"$assignStatus\",\"$assignButton\")'
+                        />
+                        </td>";
+                        echo "</tr>";
+                    }
                 }
                 echo "</table>";
             } else {
