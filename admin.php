@@ -16,9 +16,9 @@
     $bookingReferenceNumber = $_GET["bookingNumber"];
 
         if($bookingReferenceNumber != "") {
-            $searchQuery = "SELECT * FROM $sql_table WHERE bookingNo='$bookingReferenceNumber'";
+            $searchQuery = "SELECT bookingNo, customerName, phone, suburb, destinationSuburb, DATE_FORMAT(pickupDate, '%d/%m/%Y') AS date, DATE_FORMAT(pickupTime, '%k:%i') as time, assignmentStatus FROM $sql_table WHERE bookingNo='$bookingReferenceNumber'";
         } else {
-            $searchQuery = "SELECT * FROM $sql_table WHERE assignmentStatus='Unassigned' AND CONCAT(pickupDate, ' ' ,pickupTime) <= DATE_ADD(NOW(), INTERVAL 2 HOUR) AND CONCAT(pickupDate, ' ' ,pickupTime) > NOW()";
+            $searchQuery = "SELECT bookingNo, customerName, phone, suburb, destinationSuburb, DATE_FORMAT(pickupDate, '%d/%m/%Y') AS date, DATE_FORMAT(pickupTime, '%k:%i') as time, assignmentStatus FROM $sql_table WHERE assignmentStatus='Unassigned' AND CONCAT(pickupDate, ' ' ,pickupTime) <= DATE_ADD(NOW(), INTERVAL 2 HOUR) AND CONCAT(pickupDate, ' ' ,pickupTime) > NOW()";
         }
 
         $result = @mysqli_query($conn, $searchQuery)
@@ -51,7 +51,7 @@
                     echo "<td style='color:white;'>",$row["phone"],"</td>";
                     echo "<td style='color:white;'>",$row["suburb"],"</td>";
                     echo "<td style='color:white;'>",$row["destinationSuburb"],"</td>";
-                    echo "<td style='color:white;'>",$row["pickupDate"] . " " . $row["pickupTime"],"</td>";
+                    echo "<td style='color:white;'>",$row["date"] . " " . $row["time"],"</td>";
                     echo "<td style='color:white;' id='$assignStatus'>",$row["assignmentStatus"],"</td>";
                     echo "<td style='color:white;'>
                     <input
