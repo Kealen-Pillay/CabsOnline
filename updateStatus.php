@@ -1,3 +1,9 @@
+<!---
+    * Student Name: Kealen Pillay
+    * Student ID: 19076745
+    * Description of file: A PHP file that is responsible for updating the status of a booking record from 'Unassigned' to 'Assigned'.
+    * There are no functions defined in this file.
+ --->
 <?php
     /*----------------- Database Code ----------------------------- */
     require_once("../../conf/sqlinfo2.inc.php");
