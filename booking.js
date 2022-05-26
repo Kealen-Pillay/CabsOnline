@@ -26,11 +26,23 @@ function validateFields(
   time
 ) {
   if (isNotNull(cname, phone, snumber, stname, date, time)) {
+    var dateObj = new Date();
+    var year = dateObj.getFullYear();
+    var month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    var day = String(dateObj.getDate()).padStart(2, "0");
+    var hours = dateObj.getHours();
+    var minutes = String(dateObj.getMinutes()).padStart(2, "0");
+    var timePattern = hours + ":" + minutes;
+    var datePattern = year + "-" + month + "-" + day;
     if (isNaN(phone)) {
       alert("Phone number must consist of numerical characters only!");
     } else {
       if (phone.length < 10 || phone.length > 12) {
         alert("Phone number must be between 10 - 12 characters long!");
+      } else if (date < datePattern) {
+        alert("Invalid Date! You cannot enter a previous date!");
+      } else if (time < timePattern) {
+        alert("Invalid Time! You cannot enter a previous time!");
       } else {
         postData(
           dataSource,
