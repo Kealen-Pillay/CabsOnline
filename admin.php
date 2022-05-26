@@ -1,3 +1,9 @@
+<!---
+    * Student Name: Kealen Pillay
+    * Student ID: 19076745
+    * Description of file: A PHP file that handles the server side of the administration functionality. This file is responsible for retrieving booking request records from the database.
+    * There are no functions defined in this file.
+ --->
 <?php
     /*----------------- Database Code ----------------------------- */
     require_once("../../conf/sqlinfo2.inc.php");

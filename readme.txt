@@ -1,3 +1,8 @@
+Description of System - CabsOnline
+----------------------------------
+CabsOnline is an online booking tool that allows users to create a booking request for a cab. The booking page allows customers to enter their details and submit their request, where they will then be prompted with a confirmation message.
+The system also has an administration page which allows booking requests to be assigned, as well as for an administrator to search for booking requests.
+
 List of files:
 --------------
 - booking.html
