@@ -12,7 +12,7 @@
         . "<p>Error code " . mysqli_errno($conn)
         . ": " . mysqli_error($conn));
     
-    $tableCreationQuery = "CREATE TABLE IF NOT EXISTS requests (bookingNo VARCHAR(255), customerName VARCHAR(255), phone VARCHAR(12), unitNumber VARCHAR(10), streetNumber INTEGER(2), streetName VARCHAR(255), suburb VARCHAR(255), destinationSuburb VARCHAR(255), pickupDate DATE, pickupTime TIME, assignmentStatus VARCHAR(255))";
+    $tableCreationQuery = "CREATE TABLE IF NOT EXISTS requests (bookingNo VARCHAR(255) NOT NULL, customerName VARCHAR(255) NOT NULL, phone VARCHAR(12) NOT NULL, unitNumber VARCHAR(10), streetNumber INTEGER(2) NOT NULL, streetName VARCHAR(255) NOT NULL, suburb VARCHAR(255), destinationSuburb VARCHAR(255), pickupDate DATE NOT NULL, pickupTime TIME NOT NULL, assignmentStatus VARCHAR(255) NOT NULL)";
     $result = @mysqli_query($conn, $tableCreationQuery)
             or die("<p>Unable to create table</p>"
             . "<p>Error code " . mysqli_errno($conn)
