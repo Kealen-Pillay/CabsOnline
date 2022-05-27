@@ -26,26 +26,33 @@ function createRequest() {
  * @param {*} bookingReferenceNumber represents the booking reference number that has been searched by the administrator on the admin.html page. This will either contain a valid booking reference number or will contain an empty string.
  */
 function searchBookings(targetDiv, bookingReferenceNumber) {
-  document.getElementById("confirmationMessage").innerHTML = "";
-  var date = new Date();
-  var hours = date.getHours();
-  var minutes = String(date.getMinutes()).padStart(2, "0");
-  var timePattern = hours + ":" + minutes;
-  var place = document.getElementById(targetDiv);
-  var xhr = createRequest();
-  if (xhr) {
-    var requestBody =
-      "admin.php?bookingNumber=" +
-      bookingReferenceNumber +
-      "&time=" +
-      timePattern;
-    xhr.open("GET", requestBody, true);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        place.innerHTML = xhr.responseText;
-      }
-    };
-    xhr.send(null);
+  var regexPattern = new RegExp(/^$|^BRN[0-9]{5}$/);
+  if (!bookingReferenceNumber.match(regexPattern)) {
+    alert(
+      "A booking request search must either be an empty string or match the format: eg:BRN00001"
+    );
+  } else {
+    document.getElementById("confirmationMessage").innerHTML = "";
+    var date = new Date();
+    var hours = date.getHours();
+    var minutes = String(date.getMinutes()).padStart(2, "0");
+    var timePattern = hours + ":" + minutes;
+    var place = document.getElementById(targetDiv);
+    var xhr = createRequest();
+    if (xhr) {
+      var requestBody =
+        "admin.php?bookingNumber=" +
+        bookingReferenceNumber +
+        "&time=" +
+        timePattern;
+      xhr.open("GET", requestBody, true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          place.innerHTML = xhr.responseText;
+        }
+      };
+      xhr.send(null);
+    }
   }
 }
 
